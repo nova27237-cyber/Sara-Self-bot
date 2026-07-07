@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:  # 👈 اضافه شد - اجازه دیپلوی دستی
 
 jobs:
   deploy:
