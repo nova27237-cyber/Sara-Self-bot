@@ -3,9 +3,9 @@ main = "index.js"
 compatibility_date = "2024-01-01"
 
 [[kv_namespaces]]
-binding = "KV_NAMESPACE"
-id = "your-kv-namespace-id"
-preview_id = "your-kv-preview-id"
+binding = "KV_BINDING"
+id = "aed539a1686d4cff8579f90d365f3352"
+preview_id = "aed539a1686d4cff8579f90d365f3352"
 
 [vars]
 BOT_TOKEN = "8568499654:AAFyLZs7Ex9XzIy3wCUb9l9_gYQ2B_rF-Ss"
