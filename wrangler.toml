@@ -1,8 +1,8 @@
-name = "sara-workers"
+name = "sara-self-bot"
 main = "index.js"
 compatibility_date = "2024-01-01"
 
 [vars]
-BOT_TOKEN = "توکن_ربات"
+BOT_TOKEN = "توکن_رباتت"
 CF_ACCOUNT_ID = "ایدی_اکانت_کلودفلر"
 CF_API_TOKEN = "توکن_API_کلودفلر"
