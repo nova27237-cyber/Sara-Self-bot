@@ -1,15 +1,8 @@
-name = "sara-self-bot"
+name = "sara-workers"
 main = "index.js"
-compatibility_date = "2024-12-18"
+compatibility_date = "2024-01-01"
 
-# ============================================
-# ✅ این خط رو اضافه کن! (مهم!)
-# ============================================
-compatibility_flags = ["nodejs_compat"]
-
-# ============================================
-# 🗄️ KV Namespace Binding
-# ============================================
-[[kv_namespaces]]
-binding = "kv_namespace"
-id = "aed539a1686d4cff8579f90d365f3352"
+[vars]
+BOT_TOKEN = "توکن_ربات"
+CF_ACCOUNT_ID = "ایدی_اکانت_کلودفلر"
+CF_API_TOKEN = "توکن_API_کلودفلر"
