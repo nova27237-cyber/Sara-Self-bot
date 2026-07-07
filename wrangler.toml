@@ -1,23 +1,16 @@
-name = "sara-self-bot"
-main = "index.js"
-compatibility_date = "2024-01-01"
-
-[[kv_namespaces]]
-binding = "KV_BINDING"
-id = "aed539a1686d4cff8579f90d365f3352"
-preview_id = "aed539a1686d4cff8579f90d365f3352"
-
 [vars]
-BOT_TOKEN = "8568499654:AAFyLZs7Ex9XzIy3wCUb9l9_gYQ2B_rF-Ss"
-ADMIN_TOKEN = "Sara@HyperFul#1403"
-API_ID = "3516317"
-API_HASH = "5bb2948db3031dda29858104ada18631"
-PHONE_NUMBER = "+989378038736"
-PASSWORD = ""
-ADMIN_IDS = "5989309344"
-CF_ACCOUNT_ID = ""
-CF_API_TOKEN = ""
-MANAGER_ACCOUNTS = '[{"name":"مدیر","phone":"+989378038736"}]'
+# ============================================
+# 🔑 اینا مال اکانت خودته (سلف‌بری)
+# ============================================
 
-[triggers]
-crons = ["0 0 * * *"]
+PHONE_NUMBER = "+989378038736"  # 👈 شماره خودت
+API_ID = "3516317"              # 👈 از my.telegram.org
+API_HASH = "5bb2948db3031dda29858104ada18631"  # 👈 از my.telegram.org
+PASSWORD = ""                   # 👈 اگه پسورد داری
+
+# ============================================
+# 🤖 اینم ربات کنترل‌کننده (از @BotFather)
+# ============================================
+
+BOT_TOKEN = "8568499654:AAFyLZs7Ex9XzIy3wCUb9l9_gYQ2B_rF-Ss"
+ADMIN_IDS = "5989309344"  # 👈 ایدی خودت
