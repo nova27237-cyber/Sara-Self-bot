@@ -1,13 +1,64 @@
 {
-  "name": "sara-workers",
-  "version": "1.0.0",
-  "description": "ربات سارا روی Cloudflare Workers",
+  "name": "sara-self-bot",
+  "version": "2.0.0",
+  "description": "🌸 سارا HYPER FUL - کامل‌ترین سلف‌بات تلگرام با شخصیت سارا (دختر ۲۲ ساله ایرانی)",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "deploy": "wrangler deploy",
-    "dev": "wrangler dev"
+    "start": "node index.js",
+    "dev": "wrangler dev --env dev",
+    "deploy": "wrangler deploy --env production",
+    "deploy:staging": "wrangler deploy --env staging",
+    "preview": "wrangler preview",
+    "logs": "wrangler tail",
+    "test": "node tests/test.js",
+    "format": "prettier --write .",
+    "lint": "eslint .",
+    "clean": "rm -rf node_modules package-lock.json && npm install"
+  },
+  "dependencies": {
+    "telegram": "^2.16.0",
+    "input": "^1.0.1",
+    "node-fetch": "^3.3.1",
+    "dotenv": "^16.3.1"
   },
   "devDependencies": {
-    "wrangler": "^3.0.0"
+    "wrangler": "^3.0.0",
+    "prettier": "^3.0.0",
+    "eslint": "^8.0.0",
+    "nodemon": "^3.0.0"
+  },
+  "keywords": [
+    "telegram",
+    "self-bot",
+    "sara",
+    "ai",
+    "chatbot",
+    "persian",
+    "farsi",
+    "hyper-ful"
+  ],
+  "author": {
+    "name": "Sara HYPER FUL",
+    "email": "sara@hyperful.com",
+    "url": "https://github.com/sara-hyper-ful"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sara-hyper-ful/sara-self-bot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sara-hyper-ful/sara-self-bot/issues"
+  },
+  "homepage": "https://github.com/sara-hyper-ful/sara-self-bot#readme",
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "config": {
+    "wrangler": {
+      "compatibility_date": "2024-01-01"
+    }
   }
 }
