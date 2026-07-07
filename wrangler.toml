@@ -2,90 +2,22 @@ name = "sara-self-bot"
 main = "index.js"
 compatibility_date = "2024-01-01"
 
-# ============================================
-# 📦 تنظیمات KV Namespace (دیتابیس)
-# ============================================
-
 [[kv_namespaces]]
 binding = "KV_NAMESPACE"
 id = "your-kv-namespace-id"
 preview_id = "your-kv-preview-id"
 
-# ============================================
-# 🔑 متغیرهای محیطی (Vars)
-# ============================================
-
 [vars]
-# === ضروری (اجباری) ===
 BOT_TOKEN = "8568499654:AAFyLZs7Ex9XzIy3wCUb9l9_gYQ2B_rF-Ss"
 ADMIN_TOKEN = "Sara@HyperFul#1403"
 API_ID = "3516317"
 API_HASH = "5bb2948db3031dda29858104ada18631"
 PHONE_NUMBER = "+989378038736"
-PASSWORD = "پسورد_تلگرامت_اگه_داری"
+PASSWORD = ""
 ADMIN_IDS = "5989309344"
-
-# === اختیاری (برای Cloudflare AI) ===
-CF_ACCOUNT_ID = "ایدی_اکانت_کلودفلر"
-CF_API_TOKEN = "توکن_API_کلودفلر"
-
-# === اختیاری (مدیران چندگانه) ===
-MANAGER_ACCOUNTS = '[{"name":"مدیر اصلی","phone":"+989123456789"}]'
-
-# === اختیاری (تنظیمات پیشرفته) ===
-MAX_CONCURRENT_USERS = "10"
-VOICE_CACHE_TTL = "86400"
-MAX_MEMORY_PER_USER = "200"
-DEFAULT_MOOD = "happy"
-AI_TEMPERATURE = "0.95"
-AI_MAX_TOKENS = "500"
-
-# ============================================
-# 🌍 محیط‌های مختلف (Development/Production)
-# ============================================
-
-[env.dev]
-vars = {
-  BOT_TOKEN = "توکن_تست",
-  ADMIN_TOKEN = "توکن_تست_ادمین",
-  API_ID = "12345",
-  API_HASH = "هش_تست",
-  PHONE_NUMBER = "+989000000000",
-  CF_ACCOUNT_ID = "ایدی_تست",
-  CF_API_TOKEN = "توکن_تست"
-}
-
-[env.production]
-vars = {
-  BOT_TOKEN = "توکن_اصلی",
-  ADMIN_TOKEN = "توکن_اصلی_ادمین",
-  API_ID = "67890",
-  API_HASH = "هش_اصلی",
-  PHONE_NUMBER = "+989123456789",
-  CF_ACCOUNT_ID = "ایدی_اصلی",
-  CF_API_TOKEN = "توکن_اصلی"
-}
-
-# ============================================
-# ⏰ کرون جاب (Scheduled Tasks)
-# ============================================
+CF_ACCOUNT_ID = ""
+CF_API_TOKEN = ""
+MANAGER_ACCOUNTS = '[{"name":"مدیر","phone":"+989378038736"}]'
 
 [triggers]
-crons = ["0 0 * * *"]  # هر روز ساعت ۱۲ شب
-
-# ============================================
-# 📊 تنظیمات Logging
-# ============================================
-
-[logging]
-enabled = true
-level = "info"
-
-# ============================================
-# 🔒 تنظیمات امنیتی
-# ============================================
-
-[unsafe]
-bindings = [
-  { name = "KV_NAMESPACE", type = "kv_namespace" }
-]
+crons = ["0 0 * * *"]
