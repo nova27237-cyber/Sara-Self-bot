@@ -1,0 +1,16 @@
+{
+  "name": "sara-hyper-ful",
+  "version": "5.0.0",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev"
+  },
+  "dependencies": {
+    "telegram": "^2.22.2"
+  },
+  "devDependencies": {
+    "wrangler": "^3.0.0"
+  }
+}
