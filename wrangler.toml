@@ -5,6 +5,7 @@ compatibility_date = "2024-01-01"
 [[kv_namespaces]]
 binding = "KV_BINDING"
 id = "aed539a1686d4cff8579f90d365f3352"
+preview_id = "aed539a1686d4cff8579f90d365f3352"
 
 [vars]
 BOT_TOKEN = "8568499654:AAFyLZs7Ex9XzIy3wCUb9l9_gYQ2B_rF-Ss"
@@ -17,3 +18,6 @@ ADMIN_IDS = "5989309344"
 CF_ACCOUNT_ID = ""
 CF_API_TOKEN = ""
 MANAGER_ACCOUNTS = '[{"name":"مدیر","phone":"+989378038736"}]'
+
+[triggers]
+crons = ["0 0 * * *"]
