@@ -3,7 +3,7 @@ main = "index.js"
 compatibility_date = "2024-01-01"
 
 [[kv_namespaces]]
-binding = "KV_NAMESPACE"   # ← این رو عوض کن!
+binding = "KV_NAMESPACE"
 id = "aed539a1686d4cff8579f90d365f3352"
 preview_id = "aed539a1686d4cff8579f90d365f3352"
 
@@ -18,8 +18,11 @@ API_HASH = "5bb2948db3031dda29858104ada18631"
 PHONE_NUMBER = "+989378038736"
 PASSWORD = ""
 ADMIN_IDS = "5989309344"
-CF_ACCOUNT_ID = "ایدی_اکانت_کلودفلر"   # ← این رو پر کن!
-CF_API_TOKEN = "توکن_API_کلودفلر"      # ← این رو پر کن!
+
+# ⚠️ این دو رو پر کن:
+CF_ACCOUNT_ID = "your_cloudflare_account_id_here"
+CF_API_TOKEN = "your_cloudflare_api_token_here"
+
 MANAGER_ACCOUNTS = '[{"name":"مدیر","phone":"+989378038736"}]'
 
 [triggers]
