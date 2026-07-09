@@ -1,18 +1,40 @@
 name = "sara-self-bot"
 main = "index.js"
-compatibility_date = "2024-12-18"
+compatibility_date = "2024-01-01"
 
-[[kv_namespaces]]
-binding = "KV_NAMESPACE"
-id = "aed539a1686d4cff8579f90d365f3352"
-
+# ============================================
+# 🌐 متغیرهای محیطی
+# ============================================
 [vars]
 BOT_TOKEN = "8568499654:AAFyLZs7Ex9XzIy3wCUb9l9_gYQ2B_rF-Ss"
 API_ID = "3516317"
 API_HASH = "5bb2948db3031dda29858104ada18631"
 PHONE_NUMBER = "+989378038736"
-PASSWORD = ""
 ADMIN_IDS = "7343696403"
-CF_ACCOUNT_ID = ""
-CF_API_TOKEN = ""
-MANAGER_ACCOUNTS = '[{"name":"مدیر","phone":"+989378038736"}]'
+
+# ============================================
+# 🗄️ KV Namespace
+# ============================================
+[[kv_namespaces]]
+binding = "KV_NAMESPACE"
+id = "aed539a1686d4cff8579f90d365f3352"
+
+# ============================================
+# 🌍 محیط Production
+# ============================================
+[env.production]
+vars = { BOT_TOKEN = "8568499654:AAFyLZs7Ex9XzIy3wCUb9l9_gYQ2B_rF-Ss" }
+
+[env.production.kv_namespaces]
+binding = "KV_NAMESPACE"
+id = "aed539a1686d4cff8579f90d365f3352"
+
+# ============================================
+# 🧪 محیط Staging
+# ============================================
+[env.staging]
+vars = { BOT_TOKEN = "STAGING_BOT_TOKEN" }
+
+[env.staging.kv_namespaces]
+binding = "KV_NAMESPACE"
+id = "staging_kv_id"
