@@ -2,28 +2,17 @@ name = "sara-self-bot"
 main = "index.js"
 compatibility_date = "2024-12-18"
 
-# ============================================
-# 🗄️ KV Namespace
-# ============================================
 [[kv_namespaces]]
 binding = "KV_NAMESPACE"
 id = "aed539a1686d4cff8579f90d365f3352"
 
-# ============================================
-# 🌐 متغیرهای محیطی
-# ============================================
 [vars]
 BOT_TOKEN = "8568499654:AAFyLZs7Ex9XzIy3wCUb9l9_gYQ2B_rF-Ss"
-ADMIN_TOKEN = "Sara@HyperFul#1403"
 API_ID = "3516317"
 API_HASH = "5bb2948db3031dda29858104ada18631"
 PHONE_NUMBER = "+989378038736"
 PASSWORD = ""
 ADMIN_IDS = "7343696403"
-
-# ⚠️ اینارو درست پر کن!
-CF_ACCOUNT_ID = "account_id_از_داشبورد_کلودفلر"
-CF_API_TOKEN = "api_token_از_کلودفلر"
-
-# 📱 مدیریت اکانت‌ها
+CF_ACCOUNT_ID = ""
+CF_API_TOKEN = ""
 MANAGER_ACCOUNTS = '[{"name":"مدیر","phone":"+989378038736"}]'
