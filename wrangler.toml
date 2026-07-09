@@ -1,9 +1,9 @@
 name = "sara-self-bot"
 main = "index.js"
-compatibility_date = "2024-01-01"
+compatibility_date = "2024-12-18"
 
 # ============================================
-# 🗄️ KV Namespace
+# 🗄️ KV Namespace (این رو عوض کن!)
 # ============================================
 [[kv_namespaces]]
 binding = "KV_NAMESPACE"
@@ -21,12 +21,20 @@ API_HASH = "5bb2948db3031dda29858104ada18631"
 PHONE_NUMBER = "+989378038736"
 PASSWORD = ""
 ADMIN_IDS = "7343696403"
-CF_ACCOUNT_ID = "your_cloudflare_account_id_here"
-CF_API_TOKEN = "your_cloudflare_api_token_here"
+
+# ============================================
+# ⚠️ اینارو پر کن (از Cloudflare بگیر)
+# ============================================
+CF_ACCOUNT_ID = "همون آیدی که توی Cloudflare داری"
+CF_API_TOKEN = "توکنی که از Cloudflare API گرفتی"
+
+# ============================================
+# 📱 مدیریت اکانت‌ها
+# ============================================
 MANAGER_ACCOUNTS = '[{"name":"مدیر","phone":"+989378038736"}]'
 
 # ============================================
-# ⏰ کرون جاب (آپدیت خودکار روزانه)
+# ⏰ کرون جاب
 # ============================================
 [triggers]
 crons = ["0 0 * * *"]
