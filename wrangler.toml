@@ -13,21 +13,21 @@ id = "c9bf3e0d6c3e4b45904906c13abad763"
 # 🌐 متغیرهای محیطی
 # ============================================
 [vars]
-# توکن ربات تلگرام
+# 🔑 توکن ربات تلگرام (برای Webhook)
 BOT_TOKEN = "8568499654:AAFyLZs7Ex9XzIy3wCUb9l9_gYQ2B_rF-Ss"
 
-# اطلاعات اکانت تلگرام (برای سلف‌بری)
+# 📱 اطلاعات اکانت تلگرام (برای Self-Bot)
 API_ID = "3516317"
 API_HASH = "5bb2948db3031dda29858104ada18631"
 PHONE_NUMBER = "+989378038736"
 PASSWORD = ""
 
-# آیدی ادمین (آیدی عددی خودت)
+# 👑 آیدی ادمین (عدد)
 ADMIN_ID = "7343696403"
 
-# مدیریت اکانت‌ها
+# 👥 مدیریت اکانت‌ها (برای Self-Bot)
 MANAGER_ACCOUNTS = '[{"name":"مدیر","phone":"+989378038736"}]'
 
-# Cloudflare AI (اختیاری)
+# ☁️ Cloudflare AI (اختیاری - برای تشخیص عکس و صدا)
 CF_ACCOUNT_ID = "87c5f4ae30155cfb7d472759b48d53ed"
 CF_API_TOKEN = "your_api_token_here"
