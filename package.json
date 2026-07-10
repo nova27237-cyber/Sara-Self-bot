@@ -2,7 +2,7 @@
   "name": "sara-self-bot",
   "version": "2.0.0",
   "description": "🌸 سارا HYPER FUL - کامل‌ترین سلف‌بات تلگرام با شخصیت سارا (دختر ۲۲ ساله ایرانی)",
-  "main": "index.js",
+  "main": "sara.js",
   "type": "module",
   "scripts": {
     "start": "node index.js",
