@@ -1,5 +1,5 @@
 name = "sara-self-bot"
-main = "sara.js"
+main = "sara.mjs"
 compatibility_date = "2024-12-30"
 
 [[kv_namespaces]]
