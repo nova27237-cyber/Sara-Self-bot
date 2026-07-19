@@ -1,45 +1,33 @@
 {
   "name": "sara-self-bot",
   "version": "2.0.0",
-  "description": "🌸 سارا HYPER FUL - سلف‌بات تلگرام",
+  "description": "🤖 سارا سلف - ربات هوشمند تلگرام با شخصیت سارا",
   "main": "sara.js",
-  "type": "module",
-
   "scripts": {
-    "dev": "wrangler dev",
-    "deploy": "wrangler deploy",
-    "logs": "wrangler tail",
-    "format": "prettier --write .",
-    "lint": "eslint ."
+    "start": "node sara.js",
+    "dev": "nodemon sara.js"
   },
-
-  "dependencies": {
-    "telegram": "^2.26.22",
-    "input": "^1.0.1",
-    "node-fetch": "^3.3.2",
-    "dotenv": "^16.6.1"
-  },
-
-  "devDependencies": {
-    "wrangler": "^3.114.17",
-    "@cloudflare/workers-types": "^4.20260610.1",
-    "typescript": "^6.0.3",
-    "prettier": "^3.9.5",
-    "eslint": "^8.57.1",
-    "nodemon": "^3.1.14"
-  },
-
   "keywords": [
     "telegram",
-    "self-bot",
+    "bot",
+    "ai",
     "sara",
-    "persian",
-    "farsi"
+    "self",
+    "nakesa"
   ],
-
+  "author": "Sara Self Team",
   "license": "MIT",
-
+  "dependencies": {
+    "telegram": "^2.16.0",
+    "better-sqlite3": "^9.2.2",
+    "axios": "^1.6.0",
+    "moment": "^2.29.4",
+    "moment-jalaali": "^0.9.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
   "engines": {
-    "node": ">=18"
+    "node": ">=16.0.0"
   }
 }
