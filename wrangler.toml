@@ -1,20 +1,16 @@
 name = "sara-self-bot"
 main = "sara.js"
 compatibility_date = "2024-12-30"
+compatibility_flags = ["nodejs_compat"]
 
-[[kv_namespaces]]
-binding = "KV_BINDING"
-id = "c9bf3e0d6c3e4b45904906c13abad763"
+[[d1_databases]]
+binding = "DB"
+database_name = "sara-db"
+database_id = "e376a6ef-f88a-426d-8cf8-81ca8264acc5"
 
 [vars]
-API_ID = "3516317"
-API_HASH = "5bb2948db3031dda29858104ada18631"
+API_ID = "21052688"
+API_HASH = "dff2dac0409ffb456f3336ebb56f7d6c"
 BOT_TOKEN = "7343696403:AAH8OHEkFPh5BYyGgFOSbVEO__YHsFlDIhU"
-
 PHONE_NUMBER = "+989378038736"
-PASSWORD = ""
-ADMIN_ID = "7343696403"
 ADMIN_IDS = "7343696403"
-
-CF_ACCOUNT_ID = "87c5f4ae30155cfb7d472759b48d53ed"
-CF_API_TOKEN = "cfut_FjifYcjzo3QZqPWMaVtY0QqlNjHkjVepkBHtUnnc7f9a1f89"
