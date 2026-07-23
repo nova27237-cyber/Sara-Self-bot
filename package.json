@@ -5,7 +5,12 @@
   "main": "sara.js",
   "scripts": {
     "start": "node sara.js",
-    "dev": "nodemon sara.js"
+    "dev": "nodemon sara.js",
+    "wrangler:dev": "wrangler dev",
+    "wrangler:deploy": "wrangler deploy",
+    "db:create": "wrangler d1 create sara-db",
+    "db:migrate": "wrangler d1 execute sara-db --file=schema.sql",
+    "db:reset": "wrangler d1 execute sara-db --command='DROP TABLE IF EXISTS users; DROP TABLE IF EXISTS transactions; DROP TABLE IF EXISTS ai_history; DROP TABLE IF EXISTS memory; DROP TABLE IF EXISTS ip_hashes; DROP TABLE IF EXISTS group_settings; DROP TABLE IF EXISTS group_keywords; DROP TABLE IF EXISTS group_blacklist; DROP TABLE IF EXISTS logs; DROP TABLE IF EXISTS bot_settings; DROP TABLE IF EXISTS backups;' && wrangler d1 execute sara-db --file=schema.sql"
   },
   "keywords": [
     "telegram",
@@ -13,7 +18,9 @@
     "ai",
     "sara",
     "self",
-    "nakesa"
+    "nakesa",
+    "cloudflare",
+    "worker"
   ],
   "author": "Sara Self Team",
   "license": "MIT",
@@ -25,7 +32,8 @@
     "moment-jalaali": "^0.9.2"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "nodemon": "^3.0.1",
+    "wrangler": "^3.0.0"
   },
   "engines": {
     "node": ">=16.0.0"
