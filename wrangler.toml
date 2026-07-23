@@ -1,16 +1,15 @@
 name = "sara-self-bot"
-main = "sara.js"
+main = "index.js"
 compatibility_date = "2024-12-30"
 compatibility_flags = ["nodejs_compat"]
 
-[[d1_databases]]
-binding = "DB"
-database_name = "sara-db"
-database_id = "e376a6ef-f88a-426d-8cf8-81ca8264acc5"
+[[kv_namespaces]]
+binding = "KV_BINDING"
+id = "your-kv-id"  # ← این رو باید عوض کنی
 
 [vars]
 API_ID = "21052688"
-API_HASH = "API_HASH_JADID"  # ← تغییر بده
-BOT_TOKEN = "BOT_TOKEN_JADID"  # ← تغییر بده
+API_HASH = "API_HASH_JADID"  # ← این رو عوض کن
+BOT_TOKEN = "8563580960:AAGpJiOVvzAzAVeIl5bD8546sX45OiEv1o4"
 PHONE_NUMBER = "+989378038736"
 ADMIN_IDS = "7343696403"
