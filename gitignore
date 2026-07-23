@@ -1,40 +1,68 @@
+# ============================================
+# 📁 .gitignore - سارا HYPER FUL ULTIMATE
+# ============================================
 
----
-
-## 📄 **۵. فایل `.gitignore` (درست شده)**
-
-```gitignore
 # ===== دیتابیس =====
 data/
 *.db
 *.db-journal
 *.sqlite
+*.sqlite3
+*.db3
 
 # ===== لاگ‌ها =====
 *.log
 logs/
+log.txt
+*.log.*
 
 # ===== وابستگی‌ها =====
 node_modules/
 package-lock.json
 yarn.lock
+pnpm-lock.yaml
+bun.lockb
 
 # ===== فایل‌های محیطی =====
 .env
 .env.local
 .env.production
+.env.staging
+.env.*.local
+*.env
 .wrangler/
+
+# ===== سشن تلگرام =====
+session_string*
+*.session
+*.session.json
+*.session.bak
+
+# ===== کش =====
+.cache/
+*.cache
+dist/
+build/
+.wrangler/
+.vite/
 
 # ===== سیستم‌عامل =====
 .DS_Store
 Thumbs.db
 desktop.ini
+._*
+*.orig
 
 # ===== ویرایشگرها =====
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
+.*.swp
+.*.swo
+.vim/
+.zed/
 
 # ===== فایل‌های موقت =====
 tmp/
@@ -42,3 +70,45 @@ temp/
 *.tmp
 *.temp
 *.bak
+*.backup
+
+# ===== فایل‌های شخصی =====
+*.pem
+*.key
+*.crt
+*.p12
+*.pfx
+*.p8
+*.p7b
+
+# ===== آپلودها =====
+uploads/
+downloads/
+media/
+files/
+attachments/
+
+# ===== تست =====
+coverage/
+.nyc_output/
+test-results/
+*.test.js
+*.spec.js
+*.test.ts
+*.spec.ts
+
+# ===== داکر =====
+*.dockerfile
+.dockerignore
+docker-compose.override.yml
+
+# ===== گیت =====
+*.patch
+*.diff
+.git/
+.gitattributes
+.gitmodules
+
+# ===== Github Actions =====
+.github/
+*.github
