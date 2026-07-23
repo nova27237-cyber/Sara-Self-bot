@@ -9,7 +9,7 @@ id = "your-kv-id"  # ← با آیدی KV خودت عوض کن
 
 [vars]
 API_ID = "21052688"
-API_HASH = "c4b7e8f9a1d2e3f4g5h6i7j8k9l0m1n2"  # ← API_HASH واقعی خودت رو بذار
+API_HASH = "dff2dac0409ffb456f3336ebb56f7d6c"  # ← API_HASH واقعی خودت رو بذار
 BOT_TOKEN = "8563580960:AAGpJiOVvzAzAVeIl5bD8546sX45OiEv1o4"
 PHONE_NUMBER = "+989378038736"
 ADMIN_IDS = "7343696403"
