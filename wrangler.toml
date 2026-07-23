@@ -5,11 +5,19 @@ compatibility_flags = ["nodejs_compat"]
 
 [[kv_namespaces]]
 binding = "KV_BINDING"
-id = "your-kv-id"  # ← این رو باید عوض کنی
+id = "your-kv-id"  # ← با آیدی KV خودت عوض کن
 
 [vars]
 API_ID = "21052688"
-API_HASH = "API_HASH_JADID"  # ← این رو عوض کن
+API_HASH = "c4b7e8f9a1d2e3f4g5h6i7j8k9l0m1n2"  # ← API_HASH واقعی خودت رو بذار
 BOT_TOKEN = "8563580960:AAGpJiOVvzAzAVeIl5bD8546sX45OiEv1o4"
 PHONE_NUMBER = "+989378038736"
 ADMIN_IDS = "7343696403"
+PASSWORD = ""  # ← اگه 2FA داری اینجا بذار
+
+# تنظیمات Cloudflare AI (اختیاری)
+CF_ACCOUNT_ID = "your-cf-account-id"  # ← برای TTS و تشخیص عکس
+CF_API_TOKEN = "your-cf-api-token"    # ← برای TTS و تشخیص عکس
+
+[triggers]
+crons = ["0 * * * *"]  # ← آپدیت خودکار هر ساعت
