@@ -16,8 +16,8 @@ database_id = "e376a6ef-f88a-426d-8cf8-81ca8264acc5"
 
 # ===== متغیرهای محیطی =====
 [vars]
-API_ID = "21052688"
-API_HASH = "dff2dac0409ffb456f3336ebb56f7d6c"  # ← این رو با API_HASH واقعی عوض کن
+API_ID = "3516317"
+API_HASH = "5bb2948db3031dda29858104ada18631"  # ← این رو با API_HASH واقعی عوض کن
 BOT_TOKEN = "8563580960:AAGpJiOVvzAzAVeIl5bD8546sX45OiEv1o4"
 PHONE_NUMBER = "+989378038736"
 ADMIN_IDS = "7343696403"
