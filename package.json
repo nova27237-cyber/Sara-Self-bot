@@ -1,41 +1,22 @@
 {
-  "name": "sara-self-bot",
-  "version": "2.0.0",
-  "description": "🤖 سارا سلف - ربات هوشمند تلگرام با شخصیت سارا",
-  "main": "sara.js",
+  "name": "sara-self",
+  "version": "1.0.0",
+  "description": "🌸 سارا سلف - هوش مصنوعی حرفه‌ای برای تلگرام",
+  "main": "src/index.js",
   "scripts": {
-    "start": "node sara.js",
-    "dev": "nodemon sara.js",
-    "wrangler:dev": "wrangler dev",
-    "wrangler:deploy": "wrangler deploy",
-    "db:create": "wrangler d1 create sara-db",
-    "db:migrate": "wrangler d1 execute sara-db --file=schema.sql",
-    "db:reset": "wrangler d1 execute sara-db --command='DROP TABLE IF EXISTS users; DROP TABLE IF EXISTS transactions; DROP TABLE IF EXISTS ai_history; DROP TABLE IF EXISTS memory; DROP TABLE IF EXISTS ip_hashes; DROP TABLE IF EXISTS group_settings; DROP TABLE IF EXISTS group_keywords; DROP TABLE IF EXISTS group_blacklist; DROP TABLE IF EXISTS logs; DROP TABLE IF EXISTS bot_settings; DROP TABLE IF EXISTS backups;' && wrangler d1 execute sara-db --file=schema.sql"
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "deploy:prod": "wrangler deploy --env production",
+    "logs": "wrangler tail"
   },
-  "keywords": [
-    "telegram",
-    "bot",
-    "ai",
-    "sara",
-    "self",
-    "nakesa",
-    "cloudflare",
-    "worker"
-  ],
-  "author": "Sara Self Team",
-  "license": "MIT",
   "dependencies": {
-    "telegram": "^2.16.0",
-    "better-sqlite3": "^9.2.2",
-    "axios": "^1.6.0",
-    "moment": "^2.29.4",
-    "moment-jalaali": "^0.9.2"
+    "itty-router": "^5.0.0"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1",
+    "@cloudflare/workers-types": "^4.0.0",
     "wrangler": "^3.0.0"
   },
-  "engines": {
-    "node": ">=16.0.0"
-  }
+  "keywords": ["telegram", "self-bot", "ai", "cloudflare"],
+  "author": "Sara",
+  "license": "MIT"
 }
