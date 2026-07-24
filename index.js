@@ -809,6 +809,7 @@ class LearningEngine {
 }
 
   learnPattern(text, response, userId) {
+  learnPattern(text, response, userId) {
     const pattern = this.extractPattern(text);
     const key = `${userId}_${pattern}`;
     
@@ -816,7 +817,7 @@ class LearningEngine {
       this.patterns.set(key, { responses: [], score: 0, users: new Set() });
     }
     // ... ادامه کد
-}
+  }
     
     const data = this.patterns.get(key);
     if (!data.responses.includes(response)) {
