@@ -7,15 +7,16 @@
 // ============================================
 
 const ENV_VARS = {
-  API_ID: '3516317',
-  API_HASH: '5bb2948db3031dda29858104ada18631',
+const ENV_VARS = {
+  API_ID: '21052688',
+  API_HASH: 'dff2dac0409ffb456f3336ebb56f7d6c',
   PHONE_NUMBER: '+989378038736',
   PASSWORD: '',
   ADMIN_IDS: '7343696403',
   CF_ACCOUNT_ID: '',
   CF_API_TOKEN: '',
   KV_BINDING: 'KV_BINDING',
-  IP_HASH: '5e884898da28047151d0e56f8dc6292773603d0d6aabbdd62a11ef721d1542d8'
+  IP_HASH: 'IP_HASH_واقعی_خودت'  // ← اینجا رو پر کن!
 };
 
 // ============================================
