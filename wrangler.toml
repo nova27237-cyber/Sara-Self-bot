@@ -1,17 +1,34 @@
-name = "sara-self"
-main = "src/index.js"
-compatibility_date = "2024-12-18"
+# ============================================
+# wrangler.toml - تنظیمات کامل سارا
+# ============================================
 
-[[kv_namespaces]]
-binding = "KV"
-id = "your-kv-id"
+name = "sara-self-bot"
+main = "index.js"
+compatibility_date = "2024-01-01"
 
+# ====== Variables ======
 [vars]
 BOT_TOKEN = "8563580960:AAGpJiOVvzAzAVeIl5bD8546sX45OiEv1o4"
-API_ID = "3516317"
-API_HASH = "5bb2948db3031dda29858104ada18631"
 PHONE_NUMBER = "+989378038736"
 ADMIN_IDS = "7343696403"
 
-[env.production]
-vars = { BOT_TOKEN = "prod_bot_token" }
+# ====== KV Namespace ======
+[[kv_namespaces]]
+binding = "KV_BINDING"
+id = "c9bf3e0d6c3e4b45904906c13abad763"
+
+# ====== AI ======
+[ai]
+binding = "AI"
+
+# ====== Build ======
+[build]
+command = "npm install"
+
+[build.upload]
+format = "modules"
+
+# ====== Logs ======
+[observability]
+enabled = true
+head_sampling_rate = 1
