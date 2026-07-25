@@ -8,9 +8,8 @@ compatibility_date = "2024-01-01"
 
 # ====== Variables ======
 [vars]
-BOT_TOKEN = "8563580960:AAGpJiOVvzAzAVeIl5bD8546sX45OiEv1o4"
-PHONE_NUMBER = "+989378038736"
-ADMIN_IDS = "7343696403"
+BOT_TOKEN = "8707076008:AAF_cEnS-NQFPRdUJfZIrFdhx7yQ77_UN3s"
+ADMIN_IDS = "5989309344"
 
 # ====== KV Namespace ======
 [[kv_namespaces]]
