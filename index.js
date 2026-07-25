@@ -4164,7 +4164,7 @@ async function getFullStats(env) {
 
 
 // ============================================
-// 📁 index.js - سارا کامل با سلف‌بات
+// 📁 index.js - سارا سلف‌بات (Cloudflare Worker)
 // ============================================
 
 const CONFIG = {
@@ -4179,41 +4179,17 @@ const CONFIG = {
 };
 
 // ============================================
-// 📨 ارسال پیام با توکن بات
+// 📨 ارسال پیام
 // ============================================
 
-async function sendMessage(chatId, text, keyboard = null) {
+async function sendMessage(chatId, text) {
   try {
-    const body = { chat_id: chatId, text, parse_mode: 'Markdown' };
-    if (keyboard) body.reply_markup = keyboard;
-    
     await fetch(`https://api.telegram.org/bot${CONFIG.BOT_TOKEN}/sendMessage`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(body)
+      body: JSON.stringify({ chat_id: chatId, text, parse_mode: 'Markdown' })
     });
-  } catch (e) { console.error('❌ خطا در ارسال:', e); }
-}
-
-// ============================================
-// 🔐 ارسال کد به سایت رسمی
-// ============================================
-
-async function sendCodeToOfficial(chatId, code) {
-  const keyboard = {
-    inline_keyboard: [[{
-      text: '🌐 ورود به سایت رسمی',
-      url: `https://my.telegram.org/auth?code=${code}`
-    }]]
-  };
-  
-  await sendMessage(chatId,
-    `🔐 *کد ورود شما:*\n\n\`${code}\`\n\n` +
-    `📱 برای ورود به سایت رسمی تلگرام:\n` +
-    `[کلیک کنید](https://my.telegram.org/auth?code=${code})\n\n` +
-    `⏳ کد تا ۵ دقیقه معتبر است.`,
-    keyboard
-  );
+  } catch (e) {}
 }
 
 // ============================================
@@ -4234,7 +4210,7 @@ class SaraSelfBot {
     try {
       const { API_ID, API_HASH, PHONE_NUMBER, PASSWORD } = CONFIG.SELF;
       
-      // ===== سشن =====
+      // ===== سشن از KV =====
       let sessionString = await this.kv.get('session_string') || '';
       const session = new StringSession(sessionString);
       
@@ -4252,18 +4228,12 @@ class SaraSelfBot {
         phoneCode: async () => {
           console.log('⏳ منتظر کد از KV...');
           
-          // ===== مهم: کد رو از KV بگیر =====
+          // ===== کد رو از KV بگیر =====
           for (let i = 0; i < 60; i++) {
             const code = await this.kv.get('login_code');
             if (code) {
               await this.kv.delete('login_code');
               console.log('✅ کد دریافت شد:', code);
-              
-              // ارسال به ادمین
-              for (const id of CONFIG.ADMIN_IDS) {
-                await sendCodeToOfficial(id, code);
-              }
-              
               return code;
             }
             await new Promise(r => setTimeout(r, 1000));
@@ -4317,7 +4287,9 @@ class SaraSelfBot {
         const responses = [
           `🌸 سلام عزیزم! پیامت رو خوندم!`,
           `💕 سارا: دوسِت دارم!`,
-          `😏 بهم پیام دادی؟ خیلی خوشحالم!`
+          `😏 بهم پیام دادی؟ خوشحالم!`,
+          `🌸 جانم! چطوری؟`,
+          `💋 بیا پیشم!`
         ];
         const response = responses[Math.floor(Math.random() * responses.length)];
         
@@ -4369,7 +4341,7 @@ export default {
           if (/^\d{5}$/.test(code)) {
             // ===== ذخیره کد در KV =====
             await env.KV_BINDING.put('login_code', code);
-            console.log('✅ کد ذخیره شد در KV:', code);
+            console.log('✅ کد ذخیره شد:', code);
             
             await sendMessage(chatId, `✅ کد ${code} دریافت شد!\n⏳ در حال اتصال...`);
 
@@ -4395,8 +4367,7 @@ export default {
         // ===== /start =====
         if (text === '/start') {
           await sendMessage(chatId, 
-            `🌸 سلام! به سارا خوش آمدی!\n\n` +
-            `📱 /code 12345 - ارسال کد`
+            `🌸 سلام! به سارا خوش آمدی!\n\n📱 /code 12345 - ارسال کد`
           );
           return new Response('OK');
         }
