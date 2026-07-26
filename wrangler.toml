@@ -1,26 +1,18 @@
-# ============================================
-# wrangler.toml - تنظیمات کامل سارا
-# ============================================
-
 name = "sara-self-bot"
 main = "index.js"
 compatibility_date = "2024-01-01"
 
-# ====== Variables ======
 [vars]
 BOT_TOKEN = "8707076008:AAF_cEnS-NQFPRdUJfZIrFdhx7yQ77_UN3s"
 ADMIN_IDS = "5989309344"
 
-# ====== KV Namespace ======
 [[kv_namespaces]]
 binding = "KV_BINDING"
 id = "c9bf3e0d6c3e4b45904906c13abad763"
 
-# ====== Build ======
 [build]
 command = "npm install"
 
-# ====== Logs ======
 [observability]
 enabled = true
 head_sampling_rate = 1
