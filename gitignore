@@ -1,114 +1,43 @@
-# ============================================
-# 📁 .gitignore - سارا HYPER FUL ULTIMATE
-# ============================================
+# ============================================================
+# 🤖 SARA AI - .gitignore
+# ============================================================
 
-# ===== دیتابیس =====
-data/
-*.db
-*.db-journal
-*.sqlite
-*.sqlite3
-*.db3
-
-# ===== لاگ‌ها =====
-*.log
-logs/
-log.txt
-*.log.*
-
-# ===== وابستگی‌ها =====
+# -------------------- Node.js --------------------
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 package-lock.json
 yarn.lock
-pnpm-lock.yaml
-bun.lockb
 
-# ===== فایل‌های محیطی =====
+# -------------------- Environment --------------------
 .env
 .env.local
-.env.production
-.env.staging
 .env.*.local
 *.env
+
+# -------------------- Wrangler --------------------
 .wrangler/
-
-# ===== سشن تلگرام =====
-session_string*
-*.session
-*.session.json
-*.session.bak
-
-# ===== کش =====
-.cache/
-*.cache
 dist/
 build/
-.wrangler/
-.vite/
+*.worker.js
+*.worker.js.map
+wrangler.toml.local
 
-# ===== سیستم‌عامل =====
-.DS_Store
-Thumbs.db
-desktop.ini
-._*
-*.orig
-
-# ===== ویرایشگرها =====
+# -------------------- IDE --------------------
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
-.*.swp
-.*.swo
-.vim/
-.zed/
+.DS_Store
 
-# ===== فایل‌های موقت =====
-tmp/
-temp/
-*.tmp
-*.temp
-*.bak
-*.backup
+# -------------------- Logs --------------------
+*.log
+logs/
+error.log
+access.log
 
-# ===== فایل‌های شخصی =====
-*.pem
-*.key
-*.crt
-*.p12
-*.pfx
-*.p8
-*.p7b
-
-# ===== آپلودها =====
-uploads/
-downloads/
-media/
-files/
-attachments/
-
-# ===== تست =====
-coverage/
-.nyc_output/
-test-results/
-*.test.js
-*.spec.js
-*.test.ts
-*.spec.ts
-
-# ===== داکر =====
-*.dockerfile
-.dockerignore
-docker-compose.override.yml
-
-# ===== گیت =====
-*.patch
-*.diff
-.git/
-.gitattributes
-.gitmodules
-
-# ===== Github Actions =====
-.github/
-*.github
+# -------------------- OS --------------------
+Thumbs.db
+Desktop.ini
