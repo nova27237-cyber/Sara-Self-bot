@@ -1,22 +1,29 @@
 {
-  "name": "sara-self",
+  "name": "sara-self-bot",
   "version": "1.0.0",
-  "description": "🌸 سارا سلف - هوش مصنوعی حرفه‌ای برای تلگرام",
+  "description": "🌸 SARA AI - ربات شخصیت سارا برای Cloudflare Workers",
   "main": "index.js",
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
     "deploy:prod": "wrangler deploy --env production",
-    "logs": "wrangler tail"
+    "deploy:staging": "wrangler deploy --env staging",
+    "tail": "wrangler tail",
+    "setup": "wrangler deploy && curl -X GET https://sara-self-bot.workers.dev/setup",
+    "logs": "wrangler tail --format=pretty",
+    "kv:list": "wrangler kv:key list --binding=KV",
+    "kv:clear": "wrangler kv:key delete --binding=KV --prefix=user:"
   },
-  "dependencies": {
-    "itty-router": "^5.0.0"
-  },
+  "keywords": [
+    "telegram-bot",
+    "cloudflare-workers",
+    "ai",
+    "persian",
+    "chatbot"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.0.0",
     "wrangler": "^3.0.0"
-  },
-  "keywords": ["telegram", "self-bot", "ai", "cloudflare"],
-  "author": "Sara",
-  "license": "MIT"
+  }
 }
