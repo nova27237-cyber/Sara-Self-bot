@@ -2,7 +2,9 @@
 // 🤖 NØVA PRO - نسخه نهایی حرفه‌ای (واقعی برای کلودفلر)
 // ============================================================
 
-import { Ai } from '@cloudflare/ai';
+// ✅ Fix: Use the correct import for Cloudflare AI
+// @cloudflare/ai is deprecated, use @cloudflare/workers-ai
+// Or use the built-in AI binding directly
 
 // ========== ۱. تنظیمات ==========
 const CONFIG = {
@@ -424,21 +426,23 @@ class AIHandler {
 
       messages.push({ role: 'user', content: text });
 
-      // ===== Cloudflare Workers AI =====
+      // ===== Cloudflare Workers AI (Fixed) =====
       if (this.env.AI) {
         try {
-          const ai = new Ai(this.env.AI);
-          const res = await ai.run('@hf/meta-llama/llama-3-8b-instruct', {
+          // ✅ Fix: Use the AI binding directly without importing @cloudflare/ai
+          const res = await this.env.AI.run('@cf/meta/llama-3-8b-instruct', {
             messages,
             temperature: character.temp || 0.8,
             max_tokens: 500
           });
+          
           const reply = res.response;
           await this.db.saveHistory(userId, text, reply);
           await this.db.inc('stats:messages');
           return reply;
         } catch (e) {
           await this.db.addLog('error', 'AI Error', { userId, error: e.message });
+          console.error('AI Error:', e);
         }
       }
 
@@ -449,6 +453,7 @@ class AIHandler {
 
     } catch (e) {
       await this.db.addLog('error', 'Chat Error', { userId, error: e.message });
+      console.error('Chat Error:', e);
       return '💫 یه مشکلی پیش اومد! دوباره تلاش کن.';
     }
   }
